@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('./db').pool;
 
 router.get('/', (req, res) => {
-    db.query(`SELECT * FROM memberships`).then(sqlRes => {
+    db.query(`select ms.* ,users.name from  bugs.memberships as ms left join bugs.users as users  on ms.user=users.id`).then(sqlRes => {
         res.send({
             status: "OKAY",
             message: "DATA_FETCHED_SUCCESSFULLY",
