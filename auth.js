@@ -68,6 +68,8 @@ router.post('/register', (req, res) => {
     }
     const uid = uuid();
     db.query(`INSERT INTO users(id,name,email,password) VALUES("${uid}","${name}","${email}","${password}")`).then(sqlRes => {
+        const uid2 = uuid();
+        db.query(`INSERT INTO memberships(id,team,user,role) VALUES("${uid2}","5c3e2679-76a8-4391-b673-9bfc9678760e","${uid}","client")`)
         res.send({
             status: "OKAY",
             message: "REGISTERED_SUCCESSFULLY",
