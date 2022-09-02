@@ -17,7 +17,8 @@ router.patch('/', (req, res) => {
     let body = req.body;
     let id = body.id;
     let status = body.status;
-    db.query(`UPDATE todo SET status="${status}" WHERE id = "${id}"`).then(sqlRes => {
+    let movedBy = body.movedby;
+    db.query(`UPDATE todo SET status="${status}",movedby="${movedBy}" WHERE id = "${id}"`).then(sqlRes => {
         res.send({
             status: "OKAY",
             message: "TODO_UPDATED_SUCCESSFULLY",
