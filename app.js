@@ -22,7 +22,7 @@ app.use('/auth', authRouter);
 app.use('/todo', todoRouter);
 app.use('/teams', teamsRouter);
 app.use('/memberships', memRouter);
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 app.listen(port, () => {
     console.log("server started on port " + port)
 })
