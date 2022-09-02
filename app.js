@@ -22,6 +22,13 @@ app.use('/auth', authRouter);
 app.use('/todo', todoRouter);
 app.use('/teams', teamsRouter);
 app.use('/memberships', memRouter);
+app.use('/', (req, res) => {
+    res.send({
+        status: "OKAY",
+        message: "DEFAULT_ROUTE",
+        data: null
+    })
+})
 const port = process.env.PORT || 3000
 app.listen(port, () => {
     console.log("server started on port " + port)
